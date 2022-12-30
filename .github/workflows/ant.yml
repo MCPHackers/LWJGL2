@@ -20,5 +20,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: LWJGL-2-windows-x86
-          path: libs/*.jar libs/windows/*
+          path: |
+            libs/*.jar 
+            libs/windows/*
           if-no-files-found: error
