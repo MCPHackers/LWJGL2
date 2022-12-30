@@ -13,14 +13,38 @@ jobs:
           java-version: 8
           # architecture: 'x86'
           distribution: 'temurin'
-          githubToken: ${{ github.token }}
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build with Ant
         run: ant generate-all compile compile_native
       - uses: actions/upload-artifact@v3
         with:
-          name: LWJGL-2-windows-x86
+          name: LWJGL-2-windows-x64
           path: |
             libs/*.jar 
             libs/windows/*
+          if-no-files-found: error
+  linux-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: 8
+          # architecture: 'x86'
+          distribution: 'temurin'
+      - name: Set up GCC
+        uses: egor-tensin/setup-gcc@v1
+        with:
+          version: latest
+          platform: x64
+      - name: Build with Ant
+        run: ant generate-all compile compile_native
+      - uses: actions/upload-artifact@v3
+        with:
+          name: LWJGL-2-linux-x64
+          path: |
+            libs/*.jar 
+            libs/linux/*
           if-no-files-found: error
