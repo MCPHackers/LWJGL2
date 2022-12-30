@@ -62,7 +62,7 @@ jobs:
           # architecture: 'x86'
           distribution: 'temurin'
       - name: Brew doctor
-        run: sudo brew doctor
+        run: brew doctor
       - name: Build with Ant
         run: ant generate-all compile compile_native
       - uses: actions/upload-artifact@v3
