@@ -40,7 +40,7 @@ jobs:
           version: latest
           platform: x64
       - name: Download X11 development libraries
-        run: sudo apt install libxxf86vm-dev
+        run: sudo apt install libxxf86vm-dev libxrandr-devel libxcursor-dev
       - name: Build with Ant
         run: ant generate-all compile compile_native
       - uses: actions/upload-artifact@v3
