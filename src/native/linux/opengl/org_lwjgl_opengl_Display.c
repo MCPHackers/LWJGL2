@@ -241,10 +241,10 @@ JNIEXPORT void JNICALL Java_org_lwjgl_opengl_LinuxDisplay_nSetClassHint(JNIEnv *
 }
 
 static void destroyWindow(JNIEnv *env, Display *disp, Window window) {
-	if (glx_window != None) {
-		lwjgl_glXDestroyWindow(disp, glx_window);
-		glx_window = None;
-	}
+	// if (glx_window != None) {
+	// 	lwjgl_glXDestroyWindow(disp, glx_window);
+	// 	glx_window = None;
+	// }
 	XDestroyWindow(disp, window);
 	XFreeColormap(disp, cmap);
 }
